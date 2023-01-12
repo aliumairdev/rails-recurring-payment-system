@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row">
+        <div class="col-6 form-wrapper p-5 mt-5">
+            <h3>Create Feature</h3>
+            <%= form_for(@feature) do |f| %>
+
+                <div class="form-group">
+                    <%= f.label :name %>
+                    <%= f.text_field :name, class: 'form-control' %>
+                </div>
+                <%= render "/shared/field_errors", resource: @feature, field: :name %>
+
+                <div class="form-group">
+                    <%= f.label :code %>
+                    <%= f.text_field :code, class: 'form-control' %>
+                </div>
+                <%= render "/shared/field_errors", resource: @feature, field: :code %>
+
+                <div class="form-group">
+                    <%= f.label :max_unit_limit %>
+                    <%= f.number_field :max_unit_limit, class: 'form-control' %>
+                </div>
+                <%= render "/shared/field_errors", resource: @feature, field: :max_unit_limit %>
+
+                <div class="form-group">
+                    <%= f.label :unit_price %>
+                    <%= f.number_field :unit_price, class: 'form-control' %>
+                </div>
+                <%= render "/shared/field_errors", resource: @feature, field: :unit_price %>
+
+                <%= f.submit 'Update feature', class: 'btn btn-success' %>
+            <% end %>
+            <h5 class="mt-3">
+                <%= link_to 'Back', features_path %> | 
+                <%= link_to 'Details', @feature %> | 
+                <%= link_to 'delete', @feature, method: :delete %>
+            </h5>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<h2><%= t "devise.invitations.new.header" %></h2>
+
+<%= form_for(resource, as: resource_name, url: invitation_path(resource_name), html: { method: :post }) do |f| %>
+
+  <% resource.class.invite_key_fields.each do |field| -%>
+    <div class="form-group">
+      <%= f.label field %><br />
+      <%= f.text_field field, class: 'form-control' %>
+    </div>
+  <%= render "devise/shared/field_errors", resource: resource, field: field %>
+  <% end -%>
+
+  <div class="actions">
+    <%= f.submit t("devise.invitations.new.submit_button"), class: 'btn btn-success'%>
+  </div>
+<% end %>

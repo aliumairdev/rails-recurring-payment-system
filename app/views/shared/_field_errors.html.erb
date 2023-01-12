@@ -1,0 +1,8 @@
+
+<% if resource.errors[field].any? %>
+    <ul class="errors">
+      <% resource.errors[field].each do |message| %>
+        <li><%= field.to_s.capitalize %> <%= message %></li>
+      <% end %>
+    </ul>    
+<% end %>

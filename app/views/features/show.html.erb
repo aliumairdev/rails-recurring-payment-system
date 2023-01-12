@@ -1,0 +1,24 @@
+<h1><%= @feature.name %></h1>
+
+<ul>
+    <li>
+        <b>Code: </b><%= @feature.code %> |
+    </li>
+    <li>
+        <b>Max Unit Limit: </b><%= @feature.max_unit_limit %> |
+    </li>
+    <li>
+        <b>Manager Id: </b><%= @feature.manager_id %> |
+    </li>
+    <li>
+        <b>Unit Price: </b><%= @feature.unit_price %> |
+    </li>
+</ul>
+
+<h5 class="mt-3">
+    <%= link_to 'Back', features_path %> | 
+    <% if current_user.has_role? :manager %>
+        <%= link_to 'Edit', edit_feature_path(@feature) %> | 
+        <%= link_to 'delete', @feature, method: :delete %>
+    <% end %>
+</h5>

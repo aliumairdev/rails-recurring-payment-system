@@ -1,0 +1,13 @@
+
+<h1>Invited Users</h1>
+<%= link_to 'Invite New User', new_user_invitation_path %>
+
+<ul>
+    <% @invitees.each do |invitee| %>
+        <li>
+            <b>Name: </b><%= invitee.email %> |
+            <b>Created by Invite: </b><%= invitee.created_by_invite? %> |
+            <b>invitation accepted: </b><%= invitee.invitation_accepted? %> |
+        </li>
+    <% end %>
+</ul>

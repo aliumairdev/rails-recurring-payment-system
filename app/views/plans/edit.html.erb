@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <div class="col-6 form-wrapper p-5 mt-5">
+            <h3>Create Plan</h3>
+            <%= form_for(@plan) do |f| %>
+
+                <div class="form-group">
+                    <%= f.label :name %>
+                    <%= f.text_field :name, class: 'form-control' %>
+                </div>
+                <%= render "/shared/field_errors", resource: @plan, field: :name %>
+
+                
+                <div class="form-group">
+                    <%= f.label :features %>
+                    <p class="text-secondary"><small>To keep the previous features use CTRL while selecting new features:</small></p>
+                    <%= f.collection_select :feature_ids, @features, :id, :name, {include_hidden: false}, {multiple: true, class: 'form-control'} %>
+                </div>
+                <%= render "/shared/field_errors", resource: @plan, field: :code %>
+
+                <%= f.submit 'Update Plan', class: 'btn btn-success' %>
+            <% end %>
+            <h5 class="mt-3">
+                <%= link_to 'Back', plans_path %> | 
+                <%= link_to 'Details', @plan %> | 
+                <%= link_to 'delete', @plan, method: :delete %>
+            </h5>
+        </div>
+    </div>
+</div>

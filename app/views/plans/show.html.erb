@@ -1,0 +1,43 @@
+<div class="container">
+    <h1><%= @plan.name %></h1>
+
+    <ul>
+        <li>
+            <b>Monthly Fee: </b>$<%= @plan.monthly_fee %> |
+        </li>
+        <li>
+            <b>Manager Id: </b><%= @plan.manager_id %> |
+        </li>
+
+        <li>
+            <b>Features: </b> <br>
+            <ul>
+                <% @plan.features.each do |feature| %>
+                    <li>
+                        <b>Name: </b><%= feature.name %> |
+                        <b>Code: </b><%= feature.code %> |
+                        <b>Max Unit Limit: </b><%= feature.max_unit_limit %> |
+                        <b>Unit Price: </b> $<%= feature.unit_price %> |
+                        <b>Link to: </b><%= link_to 'Details', feature_path(feature) %> | 
+                        <% if current_user.has_role? :manager %>
+                            <%= link_to 'Edit', edit_feature_path(feature) %> |
+                            <%= link_to 'Delete', feature_path(feature), method: :delete %>
+                        <% end %>
+                    </li>
+                <% end %>
+            </ul>
+        </li>
+
+    </ul>
+
+
+    <h5 class="mt-3">
+        <%= link_to 'Back', plans_path %> | 
+        <% if current_user.has_role? :manager %>
+            <%= link_to 'edit', edit_plan_path(@plan) %> | 
+            <%= link_to 'delete', @plan, method: :delete %>
+        <% else %>
+        <%= link_to 'Subscribe Now', plan_subscriptions_path(@plan), method: :post, class: 'btn btn-success' %>
+        <% end %>
+    </h5>
+</div>

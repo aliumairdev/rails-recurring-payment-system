@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>PaymentSubscriptionSystem</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body class='mh-100'>
+    <div class="container mh-100">
+        <div class="row mh-100 justify-content-center align-items-center">
+            <div class="col-6 form-wrapper p-5">
+                <%= render 'shared/notices_alerts' %>
+                
+                <%= yield %>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
